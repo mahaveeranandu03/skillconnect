@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillConnect - Find Your Perfect Coding Team</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Landing Screen -->
+    <div id="landing-screen" class="screen active">
+        <div class="landing-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <div class="landing-content">
+            <div class="logo">SkillConnect</div>
+            <h1>Find Your Perfect Coding Team</h1>
+            <p class="subtitle">Connect with skilled developers based on verified expertise. Build stronger teams. Ship faster products.</p>
+
+            <div class="btn-group">
+                <button class="btn-primary" onclick="showScreen('auth')">Get Started Now</button>
+                <button class="btn-secondary">Learn More</button>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Skill Tests</div>
+                    <div class="feature-desc">Verify your expertise</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-title">Smart Matching</div>
+                    <div class="feature-desc">AI-powered teams</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-title">Verified Profiles</div>
+                    <div class="feature-desc">Trusted connections</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Screen -->
+    <div id="auth-screen" class="screen">
+        <div class="auth-box">
+            <h2>Welcome to SkillConnect</h2>
+            <p class="subtitle">Sign up with your REVA University email</p>
+            
+            <input type="email" id="email-input" placeholder="your.email@reva.edu.in">
+            <input type="text" id="name-input" placeholder="Full Name">
+            <input type="password" id="password-input" placeholder="Password">
+            
+            <button class="btn-primary" style="width: 100%; margin-bottom: 16px;" onclick="handleSignUp()">Continue</button>
+            <button class="btn-secondary" style="width: 100%;" onclick="showScreen('landing')">Back</button>
+        </div>
+    </div>
+
+    <!-- Skills Screen -->
+    <div id="skills-screen" class="screen">
+        <div class="page-header">
+            <div>
+                <h1>Select Your Skills</h1>
+                <p class="subtitle">Hey, <span id="user-name-display" style="color: var(--accent);">User</span>! Pick skills to verify</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div id="verified-section" class="verified-section">
+            <h3>✓ Verified Skills</h3>
+            <div id="verified-badges" class="verified-badges"></div>
+        </div>
+
+        <div id="skills-container"></div>
+
+        <div class="action-buttons">
+            <button id="start-test-btn" class="btn-primary" style="display: none;" onclick="startTest()">Start Verification</button>
+            <button id="find-teams-btn" class="btn-primary" style="display: none;" onclick="findTeams()">Find Teams →</button>
+        </div>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="test-screen" class="screen">
+        <div class="test-box">
+            <div class="test-header">
+                <div class="skill-header">
+                    <span id="test-icon" class="test-icon"></span>
+                    <div class="test-info">
+                        <h2 id="test-skill-name"></h2>
+                        <p id="question-number"></p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div id="test-question" class="test-question"></div>
+
+            <div id="options-container" class="options"></div>
+
+            <div class="test-score">
+                Score: <span id="test-score">0</span>/<span id="total-questions">4</span> correct
+            </div>
+        </div>
+    </div>
+
+    <!-- Matching Screen -->
+    <div id="matching-screen" class="screen">
+        <div class="page-header">
+            <div>
+                <h1>Your Perfect Teams</h1>
+                <p class="subtitle">Based on your verified skills</p>
+            </div>
+            <button class="logout-btn" onclick="showScreen('skills')">← Back</button>
+        </div>
+
+        <div id="teams-container" class="teams-grid"></div>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
